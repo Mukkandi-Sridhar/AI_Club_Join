@@ -5,329 +5,239 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Club RGMCET — Student Portal</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
 
 <style>
-/* ===== Global Reset ===== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html, body {
-  min-height: 100vh;
-  font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
-  background: linear-gradient(120deg, #6366f1 0%, #21d4fd 52%, #10b981 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* ========== Reset & Fonts ========== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body {
+  font-family: 'Poppins', sans-serif;
+  display:flex;justify-content:center;align-items:center;flex-direction:column;
+  min-height:100vh; overflow:hidden;
+  color:#fff; background:#0f172a;
 }
 
-/* ===== Main Container ===== */
-.center-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+/* ==== Futuristic Animated Background ==== */
+.bg {
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background: radial-gradient(circle at 25% top, #6366f1cc, transparent 40%),
+              radial-gradient(circle at 80% 40%, #10b981bb, transparent 35%),
+              radial-gradient(circle at 60% 70%, #21d4fdcc, transparent 40%);
+  z-index:-2;
+}
+.particles {
+  position:absolute;width:100%;height:100%;overflow:hidden;z-index:-1;
+}
+.particles span {
+  position:absolute;display:block;width:4px;height:4px;
+  background:rgba(255,255,255,0.4);
+  border-radius:50%;animation: float 18s infinite linear;
+}
+@keyframes float {
+  0%{transform:translateY(120vh) scale(0.8);}
+  100%{transform:translateY(-10vh) scale(1);}
 }
 
-/* ===== Card ===== */
+/* ==== Card ==== */
 .card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 12px 36px rgba(99,102,241,0.28), 0 8px 16px rgba(24,188,237,0.12);
-  padding: 40px 30px;
-  max-width: 420px;
-  width: 100%;
-  animation: fadeInUp 0.8s ease;
-  transition: transform 0.25s, box-shadow 0.25s;
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  padding:40px 30px;
+  text-align:center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35), inset 0 1px 35px rgba(255,255,255,0.08);
+  width:100%; max-width:420px;
+  animation:fadeInUp 0.9s ease;
+  transition:all 0.3s;
 }
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 44px rgba(99,102,241,0.33), 0 8px 16px rgba(24,188,237,0.18);
-}
+.card:hover {transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,0.45);}
 
-/* ===== Animations ===== */
 @keyframes fadeInUp {
-  from {opacity:0; transform:translateY(30px);}
-  to {opacity:1; transform:translateY(0);}
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== Header ===== */
+/* ==== Header ==== */
 .logo {
-  font-size: 2.8rem;
-  background: linear-gradient(135deg,#6366f1 30%, #10b981 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-  text-align: center;
+  font-size:3rem; margin-bottom:12px;
+  background:linear-gradient(135deg,#818cf8,#34d399);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation: glowPulse 4s infinite alternate;
+}
+@keyframes glowPulse {
+  from{text-shadow:0 0 10px #34d399;}
+  to{text-shadow:0 0 20px #6366f1;}
 }
 h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #23345c;
-  text-align: center;
-  margin-bottom: 8px;
-  letter-spacing: .03em;
+  font-size:1.7rem; font-weight:700; margin-bottom:8px;
 }
 .subtitle {
-  font-size: 1rem;
-  color: #4b5563;
-  text-align: center;
-  line-height: 1.6;
-  margin-bottom: 22px;
+  font-size:1rem; opacity:.85; margin-bottom:24px; line-height:1.6;
 }
 
-/* ===== Form ===== */
-.form-group {
-  width: 100%;
-  margin-bottom: 18px;
-}
-label {
-  font-weight: 600;
-  color: #4338ca;
-  font-size: 1rem;
-  margin-bottom: 8px;
-  display: block;
-}
-.input-wrap {
-  position: relative;
-  width: 100%;
-}
-.input-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%; 
-  transform: translateY(-50%);
-  color: #a5b4fc;
-  font-size: 1.08rem;
-}
+/* ==== Form ==== */
+label {display:block;text-align:left;margin-bottom:6px;font-weight:600;font-size:0.92rem;}
+.input-wrap {position:relative;}
+.input-icon {position:absolute;top:50%;left:12px;transform:translateY(-50%);color:#a5b4fc;}
 input[type="text"] {
-  width: 100%;
-  padding: 14px 14px 14px 42px;
-  font-size: 1rem;
-  border: 2px solid #e0e7ff;
-  border-radius: 10px;
-  background: #f5f7fa;
-  outline: none;
-  transition: border 0.2s, box-shadow 0.2s;
+  width:100%;padding:13px 13px 13px 40px;
+  border-radius:10px;border:2px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.1);color:#fff;font-size:1rem;
+  font-family:'Space Mono', monospace;
 }
-input[type="text"]:focus {
-  border-color: #10b981;
-  box-shadow: 0 2px 8px #10b98133;
-}
+input:focus {border-color:#10b981;box-shadow:0 0 8px #10b98188;outline:none;}
+::placeholder{color:#e2e8f0;opacity:.6;}
 
-/* ===== Button ===== */
+/* ==== Button ==== */
 .btn-check {
-  width: 100%;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg,#6366f1 36%,#10b981 100%);
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 4px 14px #10b9811f;
-  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top:15px;width:100%;padding:14px;
+  border:none;border-radius:10px;
+  font-size:1.08rem;font-weight:700;
+  color:#fff;cursor:pointer;letter-spacing:.5px;
+  background:linear-gradient(45deg,#6366f1,#10b981);
+  box-shadow:0 4px 14px #10b98145;transition:0.25s;
 }
-.btn-check:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px #10b9812f;
-}
-.btn-check:active {
-  transform: scale(0.98);
-}
+.btn-check:hover{transform:translateY(-2px);box-shadow:0 8px 22px #6366f185;}
+.btn-check:active{transform:scale(.97);}
 
-/* ===== Error Message ===== */
+/* ==== Error & Success ==== */
 .error-box {
-  margin-top: 12px;
-  background: #fee2e2;
-  color: #dc2626;
-  border-radius: 8px;
-  padding: 10px 13px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-align: center;
-  display: none;
-  box-shadow: 0 2px 12px #fca5a5aa;
+  margin-top:12px;display:none;
+  background:#fecaca30;color:#f87171;font-weight:600;
+  padding:10px;border-radius:8px;animation:fadeIn .4s;
 }
-
-/* ===== Success State ===== */
-.success-section {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
-.success-icon {
-  font-size: 3rem;
-  color: #10b981;
-  margin-bottom: 10px;
+.success-section {display:none;flex-direction:column;align-items:center;margin-top:14px;}
+.success-icon {font-size:3rem;color:#22c55e;margin-bottom:10px;}
+.avatar-badge {
+  width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,#6366f1,#34d399);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;font-weight:700;margin-bottom:12px;
+  box-shadow:0 4px 15px rgba(99,102,241,0.4);
 }
 .name-badge {
-  background: linear-gradient(97deg,#dbeafe 60%,#6ee7b7 100%);
-  color: #1f2937;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  font-size: 1rem;
-  box-shadow: 0 2px 12px #10b98128;
+  font-weight:600;font-size:1.05rem;margin-bottom:15px;
+  padding:8px 14px;border-radius:8px;
+  background:rgba(255,255,255,0.15);
 }
 .whatsapp-btn {
-  background: linear-gradient(90deg,#25d366,#128c7e);
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.05rem;
-  border-radius: 9px;
-  padding: 12px 25px;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 12px;
-  box-shadow: 0 6px 20px #25d36645;
-  transition: transform 0.2s;
+  display:inline-block;padding:13px 24px;margin-bottom:12px;
+  border-radius:10px;background:linear-gradient(90deg,#25d366,#128c7e);
+  color:#fff;font-weight:600;text-decoration:none;
+  transition:transform .2s; box-shadow:0 4px 18px #25d36655;
 }
-.whatsapp-btn:hover { transform: translateY(-2px); }
-.success-note {
-  font-size: 0.95rem;
-  color: #374151;
-  text-align: center;
+.whatsapp-btn:hover{transform:translateY(-2px);}
+.success-note{font-size:0.92rem;opacity:.85;}
+
+/* ==== Toggle ==== */
+.toggle-btn {
+  position:absolute;top:18px;right:22px;border:none;
+  background:rgba(255,255,255,0.1);width:40px;height:40px;
+  border-radius:50%;cursor:pointer;color:#fff;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
 }
 
-/* ===== Footer ===== */
-.footer {
-  position: fixed;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-  color: #f1f1f1;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* ===== Mobile Styles ===== */
-@media (max-width: 600px) {
-  .card {
-    padding: 24px 16px;
-    border-radius: 18px;
-  }
-  h1 { font-size: 1.3rem; }
-  .subtitle { font-size: 0.95rem; }
-  input[type="text"] { font-size: 0.95rem; }
-}
+/*====Dark Mode====*/
+body.dark {background:#e2e8f0;color:#111;}
+body.dark .card {background:rgba(23,23,23,0.1);color:#111;}
+body.dark h1,body.dark .subtitle{color:#111;}
+body.dark input{color:#111;background:rgba(0,0,0,0.05);}
+body.dark .error-box{background:#fee2e280;}
+body.dark .name-badge{background:#f1f5f9;}
 </style>
 </head>
 <body>
 
-<div class="center-wrap">
-  <div class="card">
-      <div class="logo"><i class="fas fa-brain"></i></div>
-      <h1>AI Club RGMCET — Student Portal</h1>
-      <div class="subtitle">Enter your registration number to see if you’re shortlisted.<br> Get instant WhatsApp group access if eligible!</div>
-      
-      <!-- Form -->
-      <div id="formSection">
-          <form id="verifyForm" autocomplete="off">
-              <div class="form-group">
-                  <label>Registration Number</label>
-                  <div class="input-wrap">
-                     <span class="input-icon"><i class="fas fa-id-badge"></i></span>
-                     <input type="text" id="regNumber" placeholder="e.g., 24091A33K9" maxlength="12" required>
-                  </div>
-              </div>
-              <button class="btn-check" type="submit"><i class="fas fa-search"></i> Check Eligibility</button>
-          </form>
-          <div id="errorBox" class="error-box"></div>
-      </div>
+<div class="bg"></div>
+<div class="particles"></div>
+<button class="toggle-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
 
-      <!-- Success Section -->
-      <div class="success-section" id="successSection">
-          <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-          <div class="name-badge" id="nameBadge"></div>
-          <a class="whatsapp-btn" id="whatsBtn" href="https://chat.whatsapp.com/FrKdMHlW2BS8Ix3WJvRfOW?mode=ac_t" target="_blank" rel="noopener">
-              <i class="fab fa-whatsapp"></i> Join WhatsApp Group
-          </a>
-          <div class="success-note">Introduce yourself with name + reg no.</div>
+<div class="card">
+  <div class="logo"><i class="fas fa-brain"></i></div>
+  <h1>AI Club RGMCET — Student Portal</h1>
+  <div class="subtitle">Check your eligibility using Reg. Number.<br> Get instant WhatsApp access if shortlisted!</div>
+  
+  <!-- Form -->
+  <div id="formSection">
+    <form id="verifyForm">
+      <label for="regNumber">Registration Number</label>
+      <div class="input-wrap">
+         <span class="input-icon"><i class="fas fa-id-badge"></i></span>
+         <input type="text" id="regNumber" placeholder="e.g., 24091A33K9" maxlength="12" required>
       </div>
+      <button type="submit" class="btn-check"><i class="fas fa-search"></i> Check Eligibility</button>
+    </form>
+    <div id="errorBox" class="error-box"></div>
+  </div>
+
+  <!-- Success -->
+  <div class="success-section" id="successSection">
+    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+    <div class="avatar-badge" id="avatarBadge"></div>
+    <div class="name-badge" id="nameBadge"></div>
+    <a class="whatsapp-btn" href="https://chat.whatsapp.com/FrKdMHlW2BS8Ix3WJvRfOW" target="_blank"><i class="fab fa-whatsapp"></i> Join WhatsApp Group</a>
+    <div class="success-note">Introduce yourself with Name + Reg No.</div>
   </div>
 </div>
 
-<div class="footer">© 2025 RGMCET AI Club — All Rights Reserved</div>
+<div class="footer"></div>
 
 <script>
-const aiClubMembers = [
+// Generate floating particles
+const particles=document.querySelector('.particles');
+for(let i=0;i<25;i++){
+  const span=document.createElement('span');
+  span.style.left=Math.random()*100+"%";
+  span.style.animationDuration=(10+Math.random()*20)+'s';
+  span.style.opacity=Math.random();
+  particles.appendChild(span);
+}
+
+const aiClubMembers=[
   {name:"Manti Sucharitha",reg:"24091A33K9"},
   {name:"SHAIK SABERIN",reg:"24091A33F4"},
   {name:"KAKANURU DEVAKI",reg:"24091A3334"},
-  {name:"C.Chandrika",reg:"24091A3327"},
   {name:"Shaik Saniya",reg:"24091A33H2"},
-  {name:"Shaik Sana Kousar",reg:"24091A33G7"},
   {name:"Soma Sai Charan",reg:"24091A33F8"},
-  {name:"AKULA DILEEP KUMAR",reg:"24091A3337"},
-  {name:"R.Devrndra Prasad",reg:"24091A3335"},
-  {name:"Venkateswarlu Siddavatam",reg:"24091A33Q4"},
-  {name:"GOPI JAYASIMHA",reg:"24091A3364"},
-  {name:"Naguru Harinath Reddy",reg:"24091A3349"},
-  {name:"B.Shanmukhasripriya",reg:"24091A33H8"},
-  {name:"Angadi Yeshwini",reg:"24091A33R7"},
-  {name:"YERUVA JAYASANKARREDDY",reg:"24091A3363"},
-  {name:"G. Geetha",reg:"24091A3340"},
-  {name:"Repalli Rajesh",reg:"24091A33E3"},
-  {name:"u.chandu",reg:"24091A3328"},
-  {name:"S Gowthami",reg:"24091A3343"},
-  {name:"SHANKAR",reg:"24091A33H7"},
-  {name:"A.Sharanya",reg:"24091A33H9"},
-  {name:"Sumedha Yelukuru",reg:"24091A33R6"},
-  {name:"Naga Deekshitha Bethamsetty",reg:"24091A33B6"},
-  {name:"D. MD. Muzammil",reg:"24091A33A6"},
-  {name:"Harini Posa",reg:"24091A3350"},
-  {name:"BAILLA SUSHEEL KUMAR",reg:"24091A33M7"},
-  {name:"Prathap Naik R",reg:"24091A33D7"},
-  {name:"Vempalli sivamadhurima",reg:"24091A33J3"},
-  {name:"Chowdam Ritheesh",reg:"24091A33F0"},
-  {name:"M.darshini",reg:"24091A3331"},
-  {name:"Pavani Bandapalli",reg:"24091A33D0"},
-  {name:"Sabbella Venkata Surendra Reddy",reg:"24091A33Q3"},
-  {name:"Roshan sreeram",reg:"24091A33F1"},
   {name:"M SHIVA KISHORE",reg:"24091A33J2"},
   {name:"B.SAIKIRAN",reg:"24091A33G4"},
-  {name:"KURUBA ANIL",reg:"24091A3313"},
-  {name:"Sangeetha. V",reg:"24091A33G9"},
-  {name:"Sahithi",reg:"24091A33F5"},
-  {name:"M Likith",reg:"24091A3383"},
-  {name:"K.Naga Sandeep",reg:"24091A33B8"}
+  {name:"M Likith",reg:"24091A3383"}
 ];
+const form=document.getElementById('verifyForm'),
+      regNumber=document.getElementById('regNumber'),
+      errorBox=document.getElementById('errorBox'),
+      formSection=document.getElementById('formSection'),
+      successSection=document.getElementById('successSection'),
+      nameBadge=document.getElementById('nameBadge'),
+      avatarBadge=document.getElementById('avatarBadge');
 
-const verifyForm = document.getElementById('verifyForm');
-const regNumber = document.getElementById('regNumber');
-const formSection = document.getElementById('formSection');
-const errorBox = document.getElementById('errorBox');
-const successSection = document.getElementById('successSection');
-const nameBadge = document.getElementById('nameBadge');
-
-verifyForm.addEventListener('submit', function(e) {
+// Form Verify
+form.addEventListener('submit',e=>{
   e.preventDefault();
-  errorBox.style.display = 'none';
+  errorBox.style.display='none';
+  let regNo=regNumber.value.trim().toUpperCase();
+  if(!regNo||regNo.length<8){
+    errorBox.textContent="Enter a valid Reg. No (min 8 chars)."; errorBox.style.display='block';return;
+  }
+  let member=aiClubMembers.find(m=>m.reg===regNo);
+  if(member){
+    formSection.style.display='none';
+    nameBadge.textContent=`${member.reg} — ${member.name}`;
+    avatarBadge.textContent=member.name.split(" ").map(n=>n[0]).join("").slice(0,2).toUpperCase();
+    successSection.style.display='flex';
+  }else{
+    errorBox.textContent="Not found. Please check again."; errorBox.style.display='block';
+  }
+});
 
-  let regNo = regNumber.value.trim().toUpperCase();
-  if (!regNo || regNo.length < 8) {
-      errorBox.textContent = "Please enter your registration number (at least 8 characters).";
-      errorBox.style.display = 'block';
-      return;
-  }
-  let member = aiClubMembers.find(m => m.reg.toUpperCase() === regNo);
-  if (member) {
-      formSection.style.display = 'none';
-      nameBadge.innerHTML = `<span style="background:#4f46e5;color:#fff;padding:2px 8px;border-radius:4px;font-size:.9rem;margin-right:6px;">${member.reg}</span> ${member.name}`;
-      successSection.style.display = 'flex';
-  } else {
-      errorBox.textContent = "Registration number not found.";
-      errorBox.style.display = 'block';
-  }
-  regNumber.blur();
+// Dark Mode
+const toggleBtn=document.getElementById('themeToggle');
+toggleBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  toggleBtn.innerHTML=document.body.classList.contains('dark')
+     ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 });
 </script>
-
 </body>
 </html>
